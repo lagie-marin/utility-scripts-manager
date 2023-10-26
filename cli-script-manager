@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo chown -R $USER /usr/local/bin
 REPO_URL="https://raw.githubusercontent.com/lagie-marin/utility-scripts-template/main/"
 SCRIPTS=("addc" "addh" "adds" "addt" "push" "getlib")
 for script in "${SCRIPTS[@]}"; do
