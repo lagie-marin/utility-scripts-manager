@@ -4,7 +4,8 @@ Vous avez une collection de scripts utiles destinés à simplifier le processus 
 addc (Ajout de fichier C) :
 
 Utilité : Cette commande vous permet de créer facilement un fichier source en langage C avec des préconfigurations. Le fichier résultant inclura un "main" prêt à l'emploi, le EpiHeader (qui semble être un en-tête standard), et la syntaxe de base.
-Syntaxe : ```addc nomdufichier```\n
+Syntaxe : ```addc nomdufichier```
+
 addh (Ajout de fichier d'en-tête) :
 
 Utilité : Cette commande vous aide à créer un fichier d'en-tête en langage C avec des configurations de base. Le fichier créé contiendra le EpiHeader et la directive "pragma once" (pour éviter les inclusions multiples).
