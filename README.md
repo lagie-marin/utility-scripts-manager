@@ -10,18 +10,22 @@ addh (Ajout de fichier d'en-tête) :
 
 Utilité : Cette commande vous aide à créer un fichier d'en-tête en langage C avec des configurations de base. Le fichier créé contiendra le EpiHeader et la directive "pragma once" (pour éviter les inclusions multiples).
 Syntaxe : ```addh nomdufichier```
+
 adds (Ajout de fichier shell) :
 
 Utilité : Cette commande simplifie la création d'un fichier shell en ajoutant automatiquement le shebang (ligne d'interpréteur) pour les scripts shell.
 Syntaxe : ```adds nomdufichier```
+
 addt (Ajout de fichier de test unitaire) :
 
 Utilité : Cette commande vous permet de générer un fichier de test unitaire pour vos projets. Le fichier résultant contiendra le EpiHeader, les inclusions nécessaires, ainsi qu'une fonction de test.
 Syntaxe : ```addt nomdufichier```
+
 push (Envoi de code vers GitHub) :
 
 Utilité : Cette commande automatise le processus de mise à jour de votre code sur GitHub. Elle effectue un "git add," "git commit," et "git push" en une seule commande, vous permettant de soumettre facilement vos modifications.
 Syntaxe : ```push "le contenu du commit"```
+
 getlib (Récupération d'une bibliothèque depuis GitHub) :
 
 Utilité : Cette commande vous permet de récupérer une bibliothèque à partir de son référentiel GitHub si vous avez renseigné l'URL du référentiel. Elle simplifie le processus de gestion des dépendances en clonant automatiquement la bibliothèque.
