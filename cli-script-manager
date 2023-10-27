@@ -1,14 +1,4 @@
 #!/bin/bash
-# sudo chown -R $USER /usr/local/bin
-# REPO_URL="https://raw.githubusercontent.com/lagie-marin/utility-scripts-template/main/"
-# SCRIPTS=("addc" "addh" "adds" "addt" "push" "getlib" "script-manager")
-# for script in "${SCRIPTS[@]}"; do
-#     sudo curl -L "$REPO_URL/$script" -o "/usr/local/bin/$script"
-#     sudo chmod +x "/usr/local/bin/$script"
-# done
-# echo "The scripts have been successfully downloaded."
-#!/bin/bash
-# sudo chown -R $USER /usr/local/bin
 REPO_URL="https://raw.githubusercontent.com/lagie-marin/utility-scripts-template/main/"
 SCRIPTS=("script-manager" "getlib" "addc" "addh" "adds" "addt" "push")
 LOCAL_FOLDER="/usr/local/bin/"
