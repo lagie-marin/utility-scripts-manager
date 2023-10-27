@@ -10,7 +10,8 @@
 #!/bin/bash
 # sudo chown -R $USER /usr/local/bin
 REPO_URL="https://raw.githubusercontent.com/lagie-marin/utility-scripts-template/main/"
-SCRIPTS=("script-manager" "addc" "addh" "adds" "addt" "push" "getlib")
+SCRIPTS=("script-manager" "getlib" "addc" "addh" "adds" "addt" "push")
+LOCAL_FOLDER="/usr/local/bin/"
 
 for script in "${SCRIPTS[@]}"; do
     if [ "$script" == "getlib" ]; then
@@ -19,9 +20,10 @@ for script in "${SCRIPTS[@]}"; do
             while true; do
                 read -p "Enter the HTTPS link to the library repository: " lib_repo
                 if [[ "$lib_repo" =~ ^https://.*\.git$ ]]; then
-                    sudo curl -L "$REPO_URL/$script" -o "/usr/local/bin/$script"
-                    sudo chmod +x "/usr/local/bin/$script"
-                    sudo sed -i "3igit clone $lib_repo" "/usr/local/bin/$script"
+                    sudo chown $USER "$LOCAL_FOLDER/$script"
+                    sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
+                    sudo chmod +x "$LOCAL_FOLDER/$script"
+                    sudo sed -i "3igit clone $lib_repo" "$LOCAL_FOLDER/$script"
                     break
                 else
                     echo "Invalid URL. It should start with 'https://' and end with '.git'. Please try again."
@@ -31,8 +33,9 @@ for script in "${SCRIPTS[@]}"; do
             echo "Skipping 'getlib'."
         fi
     else
-        sudo curl -L "$REPO_URL/$script" -o "/usr/local/bin/$script"
-        sudo chmod +x "/usr/local/bin/$script"
+        sudo chown $USER "$LOCAL_FOLDER/$script"
+        sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
+        sudo chmod +x "$LOCAL_FOLDER/$script"
     fi
 done
 
