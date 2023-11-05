@@ -27,7 +27,7 @@ for script in "${SCRIPTS[@]}"; do
                     sudo chown $USER "$LOCAL_FOLDER/$script"
                     sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
                     sudo chmod +x "$LOCAL_FOLDER/$script"
-                    sudo sed -i "3i git clone $lib_repo" "$LOCAL_FOLDER/$script"
+                    sudo sed -i "6i git clone $lib_repo" "$LOCAL_FOLDER/$script"
                     break
                 else
                     echo "Invalid URL. It should start with 'https://' and end with '.git'. Please try again."
