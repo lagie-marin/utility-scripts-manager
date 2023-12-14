@@ -14,7 +14,7 @@ SCRIPTS=("script-manager" "getlib" "addc" "addh" "adds" "addt" "push" "translate
 LOCAL_FOLDER="/usr/local/bin/"
 DEST_FOLDER="/usr/utility-scripts-template/"
 
-mkdir -p "$DEST_FOLDER"
+sudo mkdir -p "$DEST_FOLDER"
 sudo chmod +x "$LOCAL_FOLDER/"
 
 for script in "${SCRIPTS[@]}"; do
