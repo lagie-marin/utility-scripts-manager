@@ -10,7 +10,7 @@ echo "                        __/ |                    | |                      
 echo "                       |___/                     |_|                                       |___/           ";
 
 REPO_URL="https://raw.githubusercontent.com/lagie-marin/utility-scripts-template/main/"
-SCRIPTS=("script-manager" "getlib" "addc" "addh" "adds" "addt" "push")
+SCRIPTS=("script-manager" "getlib" "addc" "addh" "adds" "addt" "push" "translate_csr")
 LOCAL_FOLDER="/usr/local/bin/"
 DEST_FOLDER="/usr/utility-scripts-template/"
 
