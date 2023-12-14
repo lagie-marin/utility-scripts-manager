@@ -8,9 +8,9 @@ echo " | |__| | |_| | | | |_| |_| |  ____) | (__| |  | | |_) | |_\__ \ | |  | | 
 echo "  \____/ \__|_|_|_|\__|\__, | |_____/ \___|_|  |_| .__/ \__|___/ |_|  |_|\__,_|_| |_|\__,_|\__, |\___|_|   ";
 echo "                        __/ |                    | |                                        __/ |          ";
 echo "                       |___/                     |_|                                       |___/           ";
-
-REPO_URL="https://raw.githubusercontent.com/lagie-marin/utility-scripts-template/main/"
-SCRIPTS=("script-manager" "getlib" "addc" "addh" "adds" "addt" "push" "translate_csr")
+REPO_URL="https://raw.githubusercontent.com/lagie-marin/utility-scripts-template/main"
+DOWNLOAD_PTR_URL="$REPO_URL/download.ptr"
+SCRIPTS=($(curl -s -L "$DOWNLOAD_PTR_URL" | head -n 1))
 LOCAL_FOLDER="/usr/local/bin/"
 DEST_FOLDER="/usr/utility-scripts-template/"
 
