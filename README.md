@@ -31,4 +31,9 @@ Syntaxe : ```push "le contenu du commit"```
 Utilité : Cette commande vous permet de récupérer une bibliothèque à partir de son référentiel GitHub si vous avez renseigné l'URL du référentiel. Elle simplifie le processus de gestion des dépendances en clonant automatiquement la bibliothèque.
 Syntaxe : ```getlib "votre commit"```
 
+-**__genmake (Génération de Makefile)__** :
+
+Utilité : Cette commande vous permet de générer un Makefile depuis le dossier où vous vous trouver.
+Syntaxe : ```genmake [-d] [-f folder_path]"```
+
 Ces scripts visent à accélérer le processus de développement en automatisant les tâches courantes liées à la création de fichiers source, d'en-tête, de scripts shell, de tests unitaires, et à la gestion des modifications via Git. Ils vous permettent de gagner du temps et de maintenir une structure cohérente dans vos projets.
