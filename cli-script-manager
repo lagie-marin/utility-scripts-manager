@@ -48,15 +48,18 @@ for script in "${SCRIPTS[@]}"; do
             echo "Skipping 'getlib'."
         fi
     else
-        sudo chown $USER "$LOCAL_FOLDER/$script"
         sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
+        sudo chown $USER "$LOCAL_FOLDER/$script"
         sudo chmod +x "$LOCAL_FOLDER/$script"
     fi
 done
 echo "Generate config"
-echo "LIB=$USE_LIB" >> $SETTINGS
-echo "COLOR_CODE=\'\o033[38;5;214m\'" >> $SETTINGS
-echo "COLOR_COM_I=\'\e[32m\'" >> $SETTINGS
-echo "COLOR_COM=\'\o033[32m\'" >> $SETTINGS
-echo "EPI_HEADER=\"\$inclusion_s\n\$inclusion_i EPITECH PROJECT, \$year\n\$inclusion_i \$dirname\n\$inclusion_i File description:\n\$inclusion_i \$filename\$extension\n\$inclusion_e\n\"" >> $SETTINGS
-echo "The scripts have been successfully downloaded."
+sudo touch $SETTINGS
+sudo chown $USER "$SETTINGS"
+sudo chmod +x "$SETTINGS"
+sudo echo "LIB=$USE_LIB" >> $SETTINGS
+sudo echo "COLOR_CODE=\'\o033[38;5;214m\'" >> $SETTINGS
+sudo echo "COLOR_COM_I=\'\e[32m\'" >> $SETTINGS
+sudo echo "COLOR_COM=\'\o033[32m\'" >> $SETTINGS
+sudo echo "EPI_HEADER=\"\$inclusion_s\n\$inclusion_i EPITECH PROJECT, \$year\n\$inclusion_i \$dirname\n\$inclusion_i File description:\n\$inclusion_i \$filename\$extension\n\$inclusion_e\n\"" >> $SETTINGS
+sudo echo "The scripts have been successfully downloaded."
