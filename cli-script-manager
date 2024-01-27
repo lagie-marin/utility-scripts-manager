@@ -13,6 +13,8 @@ DOWNLOAD_PTR_URL="$REPO_URL/download.ptr"
 SCRIPTS=($(curl -s -L "$DOWNLOAD_PTR_URL" | head -n 1))
 LOCAL_FOLDER="/usr/local/bin/"
 DEST_FOLDER="/usr/utility-scripts-template/"
+SETTINGS="$LOCAL_FOLDER/config.ptr"
+USE_LIB=false
 
 sudo mkdir -p "$DEST_FOLDER"
 sudo chmod +x "$LOCAL_FOLDER/"
@@ -33,6 +35,7 @@ for script in "${SCRIPTS[@]}"; do
                     sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
                     sudo chmod +x "$LOCAL_FOLDER/$script"
                     sudo sed -i "6i git clone $lib_repo" "$LOCAL_FOLDER/$script"
+                    USE_LIB=true
                     break
                 elif [ "$lib_repo" = "cancel" ]; then
                     echo "Cancel 'getlib' installation"
@@ -50,5 +53,10 @@ for script in "${SCRIPTS[@]}"; do
         sudo chmod +x "$LOCAL_FOLDER/$script"
     fi
 done
-
+echo "Generate config"
+echo "LIB=$USE_LIB" >> $SETTINGS
+echo "COLOR_CODE=\'\o033[38;5;214m\'" >> $SETTINGS
+echo "COLOR_COM_I=\'\e[32m\'" >> $SETTINGS
+echo "COLOR_COM=\'\o033[32m\'" >> $SETTINGS
+echo "EPI_HEADER=\"\$inclusion_s\n\$inclusion_i EPITECH PROJECT, \$year\n\$inclusion_i \$dirname\n\$inclusion_i File description:\n\$inclusion_i \$filename\$extension\n\$inclusion_e\n\"" >> $SETTINGS
 echo "The scripts have been successfully downloaded."
