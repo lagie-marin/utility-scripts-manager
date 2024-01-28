@@ -11,8 +11,8 @@ echo "                       |___/                     |_|                      
 REPO_URL="https://raw.githubusercontent.com/lagie-marin/utility-scripts-template/main"
 DOWNLOAD_PTR_URL="$REPO_URL/download.ptr"
 SCRIPTS=($(curl -s -L "$DOWNLOAD_PTR_URL" | head -n 1))
-LOCAL_FOLDER="/usr/local/bin/"
-DEST_FOLDER="/usr/utility-scripts-template/"
+LOCAL_FOLDER="/usr/local/bin"
+DEST_FOLDER="/usr/utility-scripts-template"
 SETTINGS="$LOCAL_FOLDER/config.ptr"
 USE_LIB=false
 
@@ -32,7 +32,8 @@ for script in "${SCRIPTS[@]}"; do
                 read -p "Enter the HTTPS link to the library repository (cancel => skip): " lib_repo
                 if [[ "$lib_repo" =~ ^https://.*\.git$ ]]; then
                     sudo chown $USER "$LOCAL_FOLDER/$script"
-                    sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
+                    # sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
+                    sudo curl -L -s --show-progress "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
                     sudo chmod +x "$LOCAL_FOLDER/$script"
                     sudo sed -i "6i git clone $lib_repo" "$LOCAL_FOLDER/$script"
                     USE_LIB=true
@@ -48,7 +49,7 @@ for script in "${SCRIPTS[@]}"; do
             echo "Skipping 'getlib'."
         fi
     else
-        sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
+        sudo wget -q --show-progress -O "$LOCAL_FOLDER/$script" "$REPO_URL/$script"
         sudo chown $USER "$LOCAL_FOLDER/$script"
         sudo chmod +x "$LOCAL_FOLDER/$script"
     fi
@@ -57,7 +58,7 @@ echo "Generate config"
 sudo touch $SETTINGS
 sudo chown $USER "$SETTINGS"
 sudo chmod +x "$SETTINGS"
-sudo echo "LIB=$USE_LIB" >> $SETTINGS
+sudo echo "LIB=$USE_LIB" > $SETTINGS
 sudo echo "COLOR_CODE=\'\o033[38;5;214m\'" >> $SETTINGS
 sudo echo "COLOR_COM_I=\'\e[32m\'" >> $SETTINGS
 sudo echo "COLOR_COM=\'\o033[32m\'" >> $SETTINGS
