@@ -33,7 +33,8 @@ for script in "${SCRIPTS[@]}"; do
                 if [[ "$lib_repo" =~ ^https://.*\.git$ ]]; then
                     sudo chown $USER "$LOCAL_FOLDER/$script"
                     # sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
-                    sudo curl -L -s --show-progress "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
+                    sudo wget -q --show-progress -O "$REPO_URL/$script" "$LOCAL_FOLDER/$script"
+                    # sudo curl -L -s --show-progress "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
                     sudo chmod +x "$LOCAL_FOLDER/$script"
                     sudo sed -i "6i git clone $lib_repo" "$LOCAL_FOLDER/$script"
                     USE_LIB=true
@@ -55,9 +56,11 @@ for script in "${SCRIPTS[@]}"; do
     fi
 done
 echo "Generate config"
-sudo touch $SETTINGS
-sudo chown $USER "$SETTINGS"
-sudo chmod +x "$SETTINGS"
+if [ ! -f "$SETTINGS" ]; then
+    sudo touch $SETTINGS
+    sudo chown $USER "$SETTINGS"
+    sudo chmod +x "$SETTINGS"
+fi
 sudo echo "CODING_STYLE=\"./coding-style-reports.log\"" > $SETTINGS
 sudo echo "LIB=$USE_LIB" >> $SETTINGS
 sudo echo "COLOR_CODE=\'\o033[38;5;214m\'" >> $SETTINGS
