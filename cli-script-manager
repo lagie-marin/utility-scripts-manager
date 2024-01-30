@@ -31,7 +31,7 @@ for script in "${SCRIPTS[@]}"; do
                 echo "This repo will be used to put your lib and simplify its recovery."
                 read -rp "Enter the HTTPS link to the library repository (cancel => skip): " lib_repo
                 if [[ "$lib_repo" =~ ^https://.*\.git$ ]]; then
-                    wget -q --show-progress -O "$LOCAL_FOLDER/$script" "$REPO_URL/$script"
+                    sudo wget -q --show-progress -O "$LOCAL_FOLDER/$script" "$REPO_URL/$script"
                     sudo chmod +x "$LOCAL_FOLDER/$script"
                     sudo chown $USER "$LOCAL_FOLDER/$script"
                     sudo sed -i "6i git clone $lib_repo" "$LOCAL_FOLDER/$script"
@@ -48,7 +48,7 @@ for script in "${SCRIPTS[@]}"; do
             echo "Skipping 'getlib'."
         fi
     else
-        wget -q --show-progress -O "$LOCAL_FOLDER/$script" "$REPO_URL/$script"
+        sudo wget -q --show-progress -O "$LOCAL_FOLDER/$script" "$REPO_URL/$script"
         sudo chown $USER "$LOCAL_FOLDER/$script"
         sudo chmod +x "$LOCAL_FOLDER/$script"
     fi
