@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -euo pipefail
 echo "  _    _ _   _ _ _ _            _____           _       _         __  __                                   ";
 echo " | |  | | | (_| (_| |          / ____|         (_)     | |       |  \/  |                                  ";
 echo " | |  | | |_ _| |_| |_ _   _  | (___   ___ _ __ _ _ __ | |_ ___  | \  / | __ _ _ __   __ _  __ _  ___ _ __ ";
@@ -17,7 +17,7 @@ SETTINGS="$LOCAL_FOLDER/config.ptr"
 USE_LIB=false
 
 sudo mkdir -p "$DEST_FOLDER"
-sudo chmod +x "$LOCAL_FOLDER/"
+sudo chmod +x "$LOCAL_FOLDER"
 
 for script in "${SCRIPTS[@]}"; do
     if [ "$script" == "getlib" ]; then
@@ -31,11 +31,9 @@ for script in "${SCRIPTS[@]}"; do
                 echo "This repo will be used to put your lib and simplify its recovery."
                 read -p "Enter the HTTPS link to the library repository (cancel => skip): " lib_repo
                 if [[ "$lib_repo" =~ ^https://.*\.git$ ]]; then
-                    sudo chown $USER "$LOCAL_FOLDER/$script"
-                    # sudo curl -L "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
-                    sudo wget -q --show-progress -O "$REPO_URL/$script" "$LOCAL_FOLDER/$script"
-                    # sudo curl -L -s --show-progress "$REPO_URL/$script" -o "$LOCAL_FOLDER/$script"
+                    sudo wget -q --show-progress -O "$LOCAL_FOLDER/$script" "$REPO_URL/$script"
                     sudo chmod +x "$LOCAL_FOLDER/$script"
+                    sudo chown $USER "$LOCAL_FOLDER/$script"
                     sudo sed -i "6i git clone $lib_repo" "$LOCAL_FOLDER/$script"
                     USE_LIB=true
                     break
