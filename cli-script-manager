@@ -1,5 +1,4 @@
 #!/bin/bash
-set -euo pipefail
 echo "  _    _ _   _ _ _ _            _____           _       _         __  __                                   ";
 echo " | |  | | | (_| (_| |          / ____|         (_)     | |       |  \/  |                                  ";
 echo " | |  | | |_ _| |_| |_ _   _  | (___   ___ _ __ _ _ __ | |_ ___  | \  / | __ _ _ __   __ _  __ _  ___ _ __ ";
@@ -61,5 +60,5 @@ if [ ! -f "$SETTINGS" ]; then
 fi
 sudo echo "CODING_STYLE=\"./coding-style-reports.log\"" > $SETTINGS
 sudo echo "LIB=$USE_LIB" >> $SETTINGS
-sudo echo "EPI_HEADER=\$inclusion_s\n\$inclusion_i EPITECH PROJECT, \$year\n\$inclusion_i \$dirname\n\$inclusion_i File description:\n\$inclusion_i \$filename\$extension\n\$inclusion_e\n" >> $SETTINGS
+sudo echo "EPI_HEADER=\$inclusion_s\n\$inclusion_i EPITECH PROJECT, \$year\n\$inclusion_i \$dirname\n\$inclusion_i File description:\n\$inclusion_i \$filename\$extension\n\$inclusion_e" >> $SETTINGS
 sudo echo "The scripts have been successfully downloaded."
