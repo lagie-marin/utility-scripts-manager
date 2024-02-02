@@ -58,7 +58,7 @@ if [ ! -f "$SETTINGS" ]; then
     sudo chown $USER "$SETTINGS"
     sudo chmod +x "$SETTINGS"
 fi
-sudo echo "CODING_STYLE=\"./coding-style-reports.log\"" > $SETTINGS
+sudo echo "CODING_STYLE=./coding-style-reports.log" > $SETTINGS
 sudo echo "LIB=$USE_LIB" >> $SETTINGS
 sudo echo "EPI_HEADER=\$inclusion_s\n\$inclusion_i EPITECH PROJECT, \$year\n\$inclusion_i \$dirname\n\$inclusion_i File description:\n\$inclusion_i \$filename\$extension\n\$inclusion_e" >> $SETTINGS
 sudo echo "The scripts have been successfully downloaded."
