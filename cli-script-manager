@@ -47,7 +47,7 @@ for script in "${SCRIPTS[@]}"; do
             echo "Skipping 'getlib'."
         fi
     else
-        sudo wget -q --show-progress -O "$LOCAL_FOLDER/$script" "$REPO_URL/$script"
+        sudo wget -q -O "$LOCAL_FOLDER/$script" "$REPO_URL/$script"
         sudo chown $USER "$LOCAL_FOLDER/$script"
         sudo chmod +x "$LOCAL_FOLDER/$script"
     fi
@@ -59,6 +59,7 @@ if [ ! -f "$SETTINGS" ]; then
     sudo chmod +x "$SETTINGS"
 fi
 sudo echo "CODING_STYLE=./coding-style-reports.log" > $SETTINGS
+sudo echo "CODING_STYLE_RULES=coding-style" >> $SETTINGS
 sudo echo "LIB=$USE_LIB" >> $SETTINGS
 sudo echo "EPI_HEADER=\$inclusion_s\n\$inclusion_i EPITECH PROJECT, \$year\n\$inclusion_i \$repo\n\$inclusion_i File description:\n\$inclusion_i \$filename\$extension\n\$inclusion_e" >> $SETTINGS
 sudo echo "LAUNCH=code" >> $SETTINGS
