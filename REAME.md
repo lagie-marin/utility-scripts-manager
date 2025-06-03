@@ -26,6 +26,9 @@ chmod +x FCP-Installer
 
 # Exécuter l'installateur
 ./FCP-Installer
+
+# Après l'installation, exécutez fcp-setup pour configurer votre environnement
+fcp-setup
 ```
 
 ### [`fcp-setup`](fcp-setup)
